@@ -1,14 +1,22 @@
 trigger:
-- dev
+- main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
+
 - checkout: self
 
-- script: echo "Build Started"
-  displayName: "Start Build"
+- task: UsePHPVersion@0
+  inputs:
+    versionSpec: '8.2'
 
-- script: echo "Pipeline Success"
-  displayName: "Finish"
+- script: php -v
+  displayName: 'Check PHP Version'
+
+- script: composer --version
+  displayName: 'Check Composer'
+
+- script: echo "Build Success"
+  displayName: 'Build Verification'
