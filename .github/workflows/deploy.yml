@@ -21,21 +21,21 @@ jobs:
           extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, zip
           coverage: none
 
-      - name: ⚙️ Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: 📦 Install Composer Dependencies
+      - name: Install Composer Dependencies
         run: composer install --optimize-autoloader --no-dev --no-progress --prefer-dist
 
-      - name: 📦 Install NPM & Build Assets
+      - name: Install NPM & Build Assets
         run: |
           npm ci
           npm run build
 
-      - name: 🏗️ Create Deployment Package
+      - name: Create Deployment Package
         run: |
           mkdir -p deployment-package
           # Salin folder utama Laravel
@@ -53,7 +53,7 @@ jobs:
           # Atur permission agar Azure bisa menulis ke folder tersebut
           chmod -R 775 deployment-package/storage deployment-package/bootstrap/cache
 
-      - name: 🚀 Deploy to Azure Web App
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ vars.WEBAPP_NAME }}
