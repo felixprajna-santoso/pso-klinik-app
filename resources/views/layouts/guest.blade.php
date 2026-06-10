@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Klinik Sehat') }}</title>
-        <link rel="icon" href="{{ Vite::asset('public/images/logo.png') }}" type="png">
+        <link rel="icon" href="{{ asset('public/images/logo.png') }}" type="png">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
